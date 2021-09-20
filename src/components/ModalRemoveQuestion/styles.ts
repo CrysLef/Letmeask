@@ -14,7 +14,7 @@ export const Container = styled.div`
 
 export const Modal = styled.div`
     width: 590px;
-    background-color: #F8F8F8;
+    background-color: ${props => props.theme.colors.background};
     margin: auto;
     border-radius: 8px;
     font-family: 'Poppins',sans-serif;
@@ -33,7 +33,7 @@ export const Modal = styled.div`
             font-size: 24px;
             font-weight: 700;
             margin-bottom: 12px;
-            color: #29292E;
+            color: ${props => props.theme.colors.text};
         }
         
         p {
@@ -54,8 +54,8 @@ export const ButtonsWrapper = styled.div`
         padding: 13px 32px;
         border-radius: 8px;
         border: 0;
-        background-color: #DBDCDD;
-        color: #737380;
+        background-color: ${props => props.theme.title === 'light' ? props.theme.colors.grayLight : props.theme.colors.whiteDetails};
+        color: ${props => props.theme.title === 'light' ? props.theme.colors.grayDark : props.theme.colors.background};
         cursor: pointer;
         transition: filter 0.2s;
 

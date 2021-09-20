@@ -5,8 +5,7 @@ export const CodeWrapper = styled.button`
     height: 40px;
     border-radius: 8px;
     overflow: hidden;
-
-    background-color: #FFF;
+    background-color: transparent;
     border: 1px solid #835AFD;
     cursor: pointer;
 
@@ -36,6 +35,7 @@ export const CodeWrapper = styled.button`
     font-size: 14px;
     font-weight: 500;
     transition: color .2s;
+    color: ${props => props.theme.title === 'light' ? props.theme.colors.text : props.theme.colors.white };
     
     &:hover {
         color: #835AFD;

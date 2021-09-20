@@ -3,7 +3,11 @@ import styled from 'styled-components';
 export const Header = styled.header`
 
     padding: 24px;
-    border-bottom: 1px solid #E2E2E2;
+    border-bottom: 1px solid ${props => props.theme.title === 'light' ? props.theme.colors.whiteDividerHeader : props.theme.colors.grayDark};
+
+    .toggle {
+        margin: 35px;
+    }
 
     .content {
         max-width: 1120px;
@@ -42,7 +46,7 @@ export const Main = styled.main`
         h1 {
             font-family: 'Poppins', sans-serif;
             font-size: 24px;
-            color: #29292E;
+            color: ${props => props.theme.colors.text};
         }
 
         span {
@@ -50,7 +54,7 @@ export const Main = styled.main`
             background-color: #E559F9;
             border-radius: 9999px;
             padding: 8px 16px;
-            color: #FFF;
+            color: ${props => props.theme.colors.white};
             font-weight: 500;
             font-size: 14px;
         }
@@ -68,10 +72,15 @@ export const Form = styled.form`
         border: 0;
         padding: 16px;
         border-radius: 8px;
-        background-color: #FEFEFE;
+        background-color: ${props => props.theme.title === 'light' ? props.theme.colors.whiteDetails : props.theme.colors.grayDark};
         box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
         resize: vertical;
         min-height: 130px;
+        color: ${props => props.theme.title === 'light' ? props.theme.colors.text : props.theme.colors.white};
+
+        &::placeholder {
+            color: ${props => props.theme.title === 'light' ? props.theme.colors.grayDark : props.theme.colors.grayLight };
+        }
     }
 
     .form-footer {
@@ -92,7 +101,7 @@ export const Form = styled.form`
 
             span {
                 margin-left: 8px;
-                color: #29292E;
+                color: ${props => props.theme.colors.text};
                 font-weight: 500;
                 font-size: 14px;
             }
@@ -100,7 +109,7 @@ export const Form = styled.form`
 
         > span {
             font-size: 14px;
-            color: #737380;
+            color: ${props => props.theme.colors.grayDark};
             font-weight: 500;
 
             button {
@@ -129,7 +138,7 @@ export const WithoutQuestions = styled.div`
         }
 
         p {
-            color: #737380;
+            color: ${props => props.theme.title === 'light' ? props.theme.colors.grayDark : props.theme.colors.grayMedium};;
             margin-top: 8px;
             text-align: center;
         }

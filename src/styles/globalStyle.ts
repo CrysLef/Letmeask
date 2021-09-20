@@ -9,11 +9,18 @@ export default createGlobalStyle`
     }
 
     body {
-        background-color: #F8F8F8;
-        color: #29292E;
+        background-color: ${props => props.theme.colors.background};
+        color: ${props => props.theme.colors.text};
     }
 
     body, input, button, textarea {
         font: 400 16px 'Roboto', sans-serif;
     }
+
+    .toggle {
+            position: fixed;
+            top: 0;
+            right: 0;
+            margin: 15px;
+        }
 `

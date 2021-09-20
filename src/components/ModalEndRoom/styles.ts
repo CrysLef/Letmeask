@@ -13,7 +13,7 @@ export const Container = styled.div`
 
 export const Modal = styled.div`
     width: 590px;
-    background-color: #F8F8F8;
+    background-color: ${props => props.theme.colors.background};
     margin: auto;
     border-radius: 8px;
     font-family: 'Poppins',sans-serif;
@@ -32,12 +32,12 @@ export const Modal = styled.div`
             font-size: 24px;
             font-weight: 700;
             margin-bottom: 12px;
-            color: #29292E;
+            color: ${props => props.theme.colors.text};
         }
         
         p {
             margin-bottom: 24px;
-            color: #737380;
+            color: ${props => props.theme.colors.grayDark};
         }
 
 `

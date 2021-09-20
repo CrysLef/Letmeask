@@ -14,6 +14,17 @@ export const AuthContainer = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
+
+        .darkDiv {
+            background: rgba( 254, 254, 254, 0.1 );
+            box-shadow: 0 8px 32px 0 rgba( 80, 38, 135, 0.37 );
+            backdrop-filter: blur( 11px ) saturate(180%);
+            -webkit-backdrop-filter: blur( 11px ) saturate(180%);
+            border-radius: 10px;
+            border: 1px solid rgba( 255, 255, 255, 0.18 );
+            max-width: 500px;
+            padding: 90px;
+        }
     }
 ` 
 
@@ -41,8 +52,8 @@ export const Content = styled.div`
             height: 50px;
             border-radius: 8px;
             padding: 0 16px;
-            background-color: #FFF;
-            border: 1px solid #A8A8B3;
+            background-color: ${props => props.theme.colors.white};
+            border: 1px solid ${props => props.theme.colors.grayMedium};
         }
 
         button {
@@ -50,13 +61,13 @@ export const Content = styled.div`
         }
 
         button, input {
-            width: 100%;
+            width:100%;
         }
     }
 
     p {
         font-size: 14px;
-        color: #737380;
+        color: ${props => props.theme.title === 'light' ? props.theme.colors.grayDark : props.theme.colors.grayLight};
         margin-top: 16px;
 
         a {
@@ -72,7 +83,7 @@ export const ButtonCreateRoom = styled.button`
     border-radius: 8px;
     font-weight: 500;
     background-color: #EA4335;
-    color: #FFF;
+    color: ${props => props.theme.colors.white};
 
     display: flex;
     justify-content: center;
@@ -99,13 +110,13 @@ export const Separator = styled.div`
     align-items: center;
     margin: 32px 0;
 
-    color: #A8A8B3;
+    color: ${props => props.theme.colors.grayMedium};
     font-size: 14px;
 
     &::before {
         content: '';
         flex: 1;
-        background-color: #A8A8B3;
+        background-color: ${props => props.theme.colors.grayMedium};
         height: 1px;
         margin-right: 16px;
     }
@@ -113,7 +124,7 @@ export const Separator = styled.div`
     &::after {
         content: '';
         flex: 1;
-        background-color: #A8A8B3;
+        background-color: ${props => props.theme.colors.grayMedium};
         height: 1px;
         margin-left: 16px;
     }
