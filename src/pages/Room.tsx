@@ -14,6 +14,13 @@ import { database } from '../services/firebase';
 import { Question } from '../components/Question';
 import { useRoom } from '../hooks/useRoom';
 
+import dark from '../styles/theme/dark';
+import light from '../styles/theme/light';
+import { DefaultTheme, ThemeProvider } from 'styled-components';
+import DarkModeToggle from "react-dark-mode-toggle";
+import GlobalStyle from '../styles/globalStyle';
+import { usePersistedState } from '../hooks/usePersistedState';
+
 type RoomParams = {
     id: string;
 }
@@ -27,6 +34,13 @@ export function Room() {
     const roomId = params.id;
     const [ newQuestion, setNewQuestion ] = useState('');
     const { title, questions } = useRoom(roomId);
+    const [ theme, setTheme ] = usePersistedState<DefaultTheme>('theme',light);
+
+    const darkTitle = theme.title === 'dark';
+
+    const toggleTheme = () => {
+        setTheme(theme.title === 'light' ? dark : light);
+    }
 
     async function handleSendQuestion(event: FormEvent) {
         event.preventDefault();
@@ -66,7 +80,7 @@ export function Room() {
     }
 
     return(
-        <div>
+        <ThemeProvider theme={theme}>
             <S.Header>
                 <div className="content">
                     <Link to="/">
@@ -74,6 +88,12 @@ export function Room() {
                     </Link>
                     <RoomCode code={roomId}/>
                 </div>
+                <DarkModeToggle
+                    className="toggle" 
+                    onChange={toggleTheme}
+                    checked={darkTitle}
+                    size={60}
+                />
             </S.Header>
 
             <S.Main>
@@ -139,6 +159,7 @@ export function Room() {
                 )}
 
             </S.Main>
-        </div>
+            <GlobalStyle />
+        </ThemeProvider>
     )
 }

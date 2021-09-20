@@ -10,14 +10,28 @@ import * as S from '../styles/auth';
 
 import { Button } from '../components/Button';
 import { AsideComponent } from '../components/AsideComponent';
+import DarkModeToggle from "react-dark-mode-toggle";
+import GlobalStyle from '../styles/globalStyle';
 
 import { FormEvent, useState } from 'react';
 import { database } from '../services/firebase';
+import dark from '../styles/theme/dark';
+import light from '../styles/theme/light';
+import { DefaultTheme, ThemeProvider } from 'styled-components';
+import { usePersistedState } from '../hooks/usePersistedState';
 
 export function Home() {
     const history = useHistory();
-    const { user, signInWithGoogle} = useAuth()
-    const [ roomCode, setRoomCode ] = useState('')
+    const { user, signInWithGoogle} = useAuth();
+    const [ roomCode, setRoomCode ] = useState('');
+    const [ theme, setTheme ] = usePersistedState<DefaultTheme>('theme',light);
+
+    const darkTitle = theme.title === 'dark';
+
+    const toggleTheme = () => {
+        setTheme(theme.title === 'light' ? dark : light);
+    }
+    
 
     const notifyRoomName = () => toast('Enter the room name',{
         icon: '😊'
@@ -67,34 +81,42 @@ export function Home() {
 
     return (
         <S.AuthContainer>
-            <AsideComponent />
-            <main>
-                <S.Content>
-                    <img src={logoImg} alt="Logo da Letmeask" />
-                    <S.ButtonCreateRoom onClick={handleCreateNewRoom}>
-                        <img src={googleIconImg} alt="Ícone do Google" />
-                        Crie sua sala com o Google
-                    </S.ButtonCreateRoom>
+            <ThemeProvider theme={theme}>
+                <AsideComponent />
+                <main>
+                    <DarkModeToggle
+                        className="toggle" 
+                        onChange={toggleTheme}
+                        checked={darkTitle}
+                        size={60}
+                    />
+                    <S.Content className={darkTitle ? 'darkDiv' : ''}>
+                        <img src={logoImg} alt="Logo da Letmeask" />
+                        <S.ButtonCreateRoom onClick={handleCreateNewRoom}>
+                            <img src={googleIconImg} alt="Ícone do Google" />
+                            Crie sua sala com o Google
+                        </S.ButtonCreateRoom>
 
-                    <S.Separator className="separator">ou entre em uma sala</S.Separator>
+                        <S.Separator className="separator">ou entre em uma sala</S.Separator>
 
-                    <form onSubmit={handleJoinRoom}>
-                        <input 
-                            type="text"
-                            placeholder="Digite o código da sala"
-                            onChange={event => setRoomCode(event.target.value)}
-                            value={roomCode}
-                        />
-                        <Button type="submit">
-                            Entrar na sala
-                        </Button>
-                    </form>
+                        <form onSubmit={handleJoinRoom}>
+                            <input 
+                                type="text"
+                                placeholder="Digite o código da sala"
+                                onChange={event => setRoomCode(event.target.value)}
+                                value={roomCode}
+                            />
+                            <Button type="submit">
+                                Entrar na sala
+                            </Button>
+                        </form>
 
-                    <Toaster />
+                        <Toaster />
 
-                </S.Content>
-            </main>
-
+                    </S.Content>
+                </main>
+                <GlobalStyle />
+            </ThemeProvider>
         </S.AuthContainer>
     )
 }
