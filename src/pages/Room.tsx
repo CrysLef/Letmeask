@@ -20,13 +20,11 @@ import { DefaultTheme, ThemeProvider } from 'styled-components';
 import DarkModeToggle from "react-dark-mode-toggle";
 import GlobalStyle from '../styles/globalStyle';
 import { usePersistedState } from '../hooks/usePersistedState';
+import toast, { Toaster } from 'react-hot-toast';
 
 type RoomParams = {
     id: string;
 }
-
-
-
 
 export function Room() {
     const { user } = useAuth();
@@ -42,15 +40,31 @@ export function Room() {
         setTheme(theme.title === 'light' ? dark : light);
     }
 
+    const notifyEmptyQuestion = () => toast('Please, type your question!',{
+        icon: '😃',
+        style: {
+            fontSize: '1.6rem',
+        }
+    })
+
+    const notifyLogin = () => toast('You must be logged In!',{
+        icon: '😤',
+        style: {
+            fontSize: '1.6rem',
+        }
+    })
+
     async function handleSendQuestion(event: FormEvent) {
         event.preventDefault();
 
         if(newQuestion.trim() === '') {
+            notifyEmptyQuestion();
             return;
         }
 
         if(!user) {
-            throw new Error('You must be logged In')
+            notifyLogin();
+            return;
         }
 
         const question = {
@@ -154,10 +168,10 @@ export function Room() {
                     <S.WithoutQuestions>
                         <img src={emptyQuestionsImg} alt="Sem perguntas no momento" />
                         <h2>Nenhuma pergunta por aqui...</h2>
-                        <p>Faça o seu login e seja a primeira pessoa a<br/>fazer uma pergunta!</p>
+                        <p>Faça o seu login e seja a primeira pessoa a fazer uma pergunta!</p>
                     </S.WithoutQuestions>
                 )}
-
+            <Toaster />
             </S.Main>
             <GlobalStyle />
         </ThemeProvider>

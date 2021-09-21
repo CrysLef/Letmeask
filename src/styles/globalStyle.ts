@@ -8,13 +8,18 @@ export default createGlobalStyle`
         box-sizing: border-box;
     }
 
+    html {
+        font-size: 62.5%;
+    }
+    
     body {
         background-color: ${props => props.theme.colors.background};
         color: ${props => props.theme.colors.text};
     }
 
     body, input, button, textarea {
-        font: 400 16px 'Roboto', sans-serif;
+        font-weight: 400;
+        font-family: 'Roboto', sans-serif;
     }
 
     .toggle {
@@ -22,5 +27,9 @@ export default createGlobalStyle`
             top: 0;
             right: 0;
             margin: 15px;
+
+            @media (max-width: 1400px) {
+                display: none;
+            }
         }
 `

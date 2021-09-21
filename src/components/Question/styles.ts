@@ -46,7 +46,14 @@ export const Container = styled.div`
     }
 
     p {
+        font-size: 1.6rem;
+        text-align: justify;
         color: ${props => props.theme.colors.text};
+    }
+
+    @media (max-width: 900px) {
+        width: 80%;
+        margin: 0 auto;
     }
 
 `
@@ -71,7 +78,7 @@ export const Footer = styled.footer`
             span {
                 margin-left: 8px;
                 color: ${props => props.theme.title === 'light' ? props.theme.colors.grayDark : props.theme.colors.grayLight};
-                font-size: 14px;
+                font-size: 1.4rem;
             }
         }
 
@@ -109,5 +116,18 @@ export const Footer = styled.footer`
                 filter: brightness(0.7);
             }
 
+        }
+
+        @media (max-width: 500px) {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+
+            .adminIcons {
+
+                @media (max-width: 500px) {
+                    align-self: flex-end;
+                }
+            }
         }
 `

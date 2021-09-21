@@ -129,7 +129,7 @@ export function AdminRoom() {
                         <S.WithoutQuestions>
                             <img src={emptyQuestionsImg} alt="Sem perguntas no momento" />
                             <h2>Nenhuma pergunta por aqui...</h2>
-                            <p>Envie o código desta sala para seus amigos e<br/>comece a responder perguntas!</p>
+                            <p>Envie o código desta sala para seus amigos e comece a responder perguntas!</p>
                         </S.WithoutQuestions>
                 )}
                 {isModalEndRoomOpen && <ModalEndRoom onClose={async () => setIsModalEndRoomOpen(false)} />}

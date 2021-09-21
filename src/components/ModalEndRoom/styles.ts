@@ -29,15 +29,20 @@ export const Modal = styled.div`
             }
         } 
         h2 {
-            font-size: 24px;
+            font-size: 2.4rem;
             font-weight: 700;
             margin-bottom: 12px;
             color: ${props => props.theme.colors.text};
         }
         
         p {
+            font-size: 1.6rem;
             margin-bottom: 24px;
             color: ${props => props.theme.colors.grayDark};
+        }
+
+        @media (max-width: 700px) {
+            width: 80%;
         }
 
 `
@@ -50,6 +55,7 @@ export const ButtonsWrapper = styled.div`
     align-items: center;
 
     button {
+        font-size: 1.6rem;
         padding: 13px 32px;
         border-radius: 8px;
         border: 0;
@@ -66,5 +72,9 @@ export const ButtonsWrapper = styled.div`
     .redButton {
         background-color: #E73F5D;
         color: #F8F8F8;
+    }
+
+    @media (max-width: 550px) {
+        flex-direction: column;
     }
 `

@@ -19,14 +19,20 @@ export const Aside = styled.aside`
     }
 
     strong {
-        font: 700 36px 'Poppins';
+        font-size: 3.6rem;
+        font-weight: 700;
+        font-family: 'Poppins', sans-serif;
         line-height: 42px;
         margin-top: 16px;
     }
 
     p {
-        font-size: 24px;
+        font-size: 2.4rem;
         line-height: 32px;
         margin-top: 16px;
+    }
+
+    @media (max-width: 1024px) {
+        display: none;
     }
 `

@@ -30,15 +30,20 @@ export const Modal = styled.div`
             }
         } 
         h2 {
-            font-size: 24px;
+            font-size: 2.4rem;
             font-weight: 700;
             margin-bottom: 12px;
             color: ${props => props.theme.colors.text};
         }
         
         p {
+            text-align: center;
             margin-bottom: 24px;
             color: #737380;
+        }
+
+        @media (max-width: 700px) {
+            width: 80%;
         }
 
 `
@@ -52,6 +57,7 @@ export const ButtonsWrapper = styled.div`
 
     button {
         padding: 13px 32px;
+        font-size: 1.6rem;
         border-radius: 8px;
         border: 0;
         background-color: ${props => props.theme.title === 'light' ? props.theme.colors.grayLight : props.theme.colors.whiteDetails};
@@ -67,5 +73,9 @@ export const ButtonsWrapper = styled.div`
     .redButton {
         background-color: #E73F5D;
         color: #F8F8F8;
+    }
+
+    @media (max-width: 550px) {
+        flex-direction: column;
     }
 `

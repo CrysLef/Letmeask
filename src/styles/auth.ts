@@ -42,7 +42,7 @@ export const Content = styled.div`
     }
 
     h2 {
-        font-size: 24px;
+        font-size: 2.4rem;
         margin: 56px 0 24px;
         font-family: 'Poppins', sans-serif;
     }
@@ -54,6 +54,7 @@ export const Content = styled.div`
             padding: 0 16px;
             background-color: ${props => props.theme.colors.white};
             border: 1px solid ${props => props.theme.colors.grayMedium};
+            font-size: 1.6rem;
         }
 
         button {
@@ -66,7 +67,7 @@ export const Content = styled.div`
     }
 
     p {
-        font-size: 14px;
+        font-size: 1.4rem;
         color: ${props => props.theme.title === 'light' ? props.theme.colors.grayDark : props.theme.colors.grayLight};
         margin-top: 16px;
 
@@ -78,6 +79,7 @@ export const Content = styled.div`
 
 export const ButtonCreateRoom = styled.button`
 
+    font-size: 1.6rem;
     margin-top: 64px;
     height: 50px;
     border-radius: 8px;
@@ -111,7 +113,7 @@ export const Separator = styled.div`
     margin: 32px 0;
 
     color: ${props => props.theme.colors.grayMedium};
-    font-size: 14px;
+    font-size: 1.4rem;
 
     &::before {
         content: '';

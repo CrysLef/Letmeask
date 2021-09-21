@@ -34,11 +34,21 @@ export function Home() {
     
 
     const notifyRoomName = () => toast('Enter the room name',{
-        icon: '😊'
+        icon: '😊',
+        style: {
+            fontSize: '1.6rem',
+        }
     })
-    const notifyError = () => toast.error('This room does not exist')
+    const notifyError = () => toast.error('This room does not exist',{
+        style: {
+            fontSize: '1.6rem',
+        }
+    })
     const notifyClosedRoom = () => toast('This room already closed.',{
         icon: '😢',
+        style: {
+            fontSize: '1.6rem',
+        }
     })
 
     async function handleCreateNewRoom() {

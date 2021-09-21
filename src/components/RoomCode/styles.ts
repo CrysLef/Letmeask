@@ -32,7 +32,7 @@ export const CodeWrapper = styled.button`
     flex: 1;
     padding: 0 16px 0 12px;
     width: 230px;
-    font-size: 14px;
+    font-size: 1.4rem;
     font-weight: 500;
     transition: color .2s;
     color: ${props => props.theme.title === 'light' ? props.theme.colors.text : props.theme.colors.white };

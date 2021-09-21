@@ -28,8 +28,20 @@ export const Header = styled.header`
             button {
                 height: 40px;
             }
+
+            @media (max-width: 600px) {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+        }
+        
+        @media (max-width: 600px) {
+            flex-direction: column;
+            gap: 8px;
         }
     }
+
 
 `
 
@@ -43,12 +55,13 @@ export const Main = styled.main`
         display: flex;
         align-items: center;
 
+        
         h1 {
             font-family: 'Poppins', sans-serif;
-            font-size: 24px;
+            font-size: 2.4rem;
             color: ${props => props.theme.colors.text};
         }
-
+        
         span {
             margin-left: 16px;
             background-color: #E559F9;
@@ -56,7 +69,16 @@ export const Main = styled.main`
             padding: 8px 16px;
             color: ${props => props.theme.colors.white};
             font-weight: 500;
-            font-size: 14px;
+            font-size: 1.4rem;
+        }
+
+        @media (max-width:500px) {
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        @media (max-width: 900px) {
+            justify-content: center;
         }
     }
 
@@ -67,7 +89,13 @@ export const Main = styled.main`
 
 export const Form = styled.form`
 
+    @media (max-width: 900px) {
+        width: 80%;
+        margin: 0 auto;
+    }
+
     textarea {
+        font-size: 1.6rem;
         width: 100%;
         border: 0;
         padding: 16px;
@@ -103,12 +131,16 @@ export const Form = styled.form`
                 margin-left: 8px;
                 color: ${props => props.theme.colors.text};
                 font-weight: 500;
-                font-size: 14px;
+                font-size: 1.4rem;
             }
+
+            @media (max-width:500px) {
+                    display: none;
+                }
         }
 
         > span {
-            font-size: 14px;
+            font-size: 1.4rem;
             color: ${props => props.theme.colors.grayDark};
             font-weight: 500;
 
@@ -116,11 +148,16 @@ export const Form = styled.form`
                 background: transparent;
                 color: #835AFD;
                 text-decoration: underline;
-                font-size: 14px;
+                font-size: 1.4rem;
                 font-weight: 500;
                 border: 0;
                 cursor: pointer;
             }
+        }
+
+        @media (max-width:500px) {
+            flex-direction: column;
+            gap: 8px;
         }
     }
 `
@@ -130,6 +167,9 @@ export const WithoutQuestions = styled.div`
         display: flex;
         flex-direction: column;
         align-items: center;
+        /* background-color: darkkhaki; */
+        width: 45%;
+        margin: 0 auto;
 
         img {
             max-width: 150px;
@@ -137,9 +177,19 @@ export const WithoutQuestions = styled.div`
             margin-bottom: 16px;
         }
 
+        h2 {
+            font-size: 2.4rem;
+            text-align: center;
+        }
+
         p {
+            font-size: 1.6rem;
             color: ${props => props.theme.title === 'light' ? props.theme.colors.grayDark : props.theme.colors.grayMedium};;
             margin-top: 8px;
             text-align: center;
+        }
+
+        @media (max-width: 700px) {
+            width: 80%;
         }
 `
