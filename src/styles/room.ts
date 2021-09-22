@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 export const Header = styled.header`
 
+    background-color: ${props => props.theme.title === 'dark' && 'rgba( 200, 200, 200, 0.1 )'};
+
     padding: 24px;
     border-bottom: 1px solid ${props => props.theme.title === 'light' ? props.theme.colors.whiteDividerHeader : props.theme.colors.grayDark};
 

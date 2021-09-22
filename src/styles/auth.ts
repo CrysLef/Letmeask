@@ -24,6 +24,10 @@ export const AuthContainer = styled.div`
             border: 1px solid rgba( 255, 255, 255, 0.18 );
             max-width: 500px;
             padding: 90px;
+
+            @media (max-width: 500px) {
+                padding: 30px;
+            }
         }
     }
 ` 
@@ -58,7 +62,11 @@ export const Content = styled.div`
         }
 
         button {
-            margin-top:16px
+            margin-top:16px;
+            
+            @media (max-width: 400px) {
+                font-size: 1.4rem;
+            }
         }
 
         button, input {
@@ -104,6 +112,10 @@ export const ButtonCreateRoom = styled.button`
         filter: brightness(0.9);
     }
 
+    @media (max-width: 400px) {
+        font-size: 1.2rem;
+    }
+
 `
 
 export const Separator = styled.div`
@@ -129,5 +141,9 @@ export const Separator = styled.div`
         background-color: ${props => props.theme.colors.grayMedium};
         height: 1px;
         margin-left: 16px;
+    }
+
+    @media (max-width: 400px) {
+        font-size: 1.4rem;
     }
 `
