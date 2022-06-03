@@ -1,40 +1,59 @@
-import styled from 'styled-components';
+import { styled } from "styles/theme";
+
+export const Button = styled('button', {
+    fontSize: '1.6rem',
+    height: 50,
+    borderRadius: 8,
+    fontWeight: 500,
+    px: 32,
+
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 8,
+
+    cursor: 'pointer',
+    border: 0,
+
+    transition: 'filter 0.2s',
 
 
-export const Button = styled.button`
-    font-size: 1.6rem;
-    height: 50px;
-    border-radius: 8px;
-    font-weight: 500;
-    background-color: #835afd;
-    color: #FFF;
-    padding: 0 32px;
+    '&:not(:disabled):hover': {
+        filter: 'brightness(0.9)'
+    },
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    '&:disabled': {
+        cursor: 'not-allowed',
+        opacity: 0.6
+    },
 
-    cursor: pointer;
-    border: 0;
-
-    transition: filter 0.2s;
-
-        img {
-            margin-right: 8px;
+    variants: {
+        variant: {
+            primary: {
+                backgroundColor: '$primary',
+                color: '#FFF',
+            },
+            google: {
+                backgroundColor: 'transparent',
+                color: '$text',
+                border: '1px solid $grayMedium'
+            },
+            danger: {
+                backgroundColor: '$danger',
+                color: '$whiteDetails'
+            },
+            cancel: {
+                backgroundColor: '$grayLight',
+                color: '$grayDark'
+            },
+            outlined: {
+                backgroundColor: 'transparent',
+                color: '$primary',
+                border: '1px solid $primary'
+            }
         }
-
-        &.outlined {
-            background-color: transparent;
-            color: #835AFD;
-            border: 1px solid #835AFD;
-        }
-
-        &:not(:disabled):hover {
-            filter: brightness(0.9);
-        }
-
-        &:disabled {
-            cursor: not-allowed;
-            opacity: 0.6;
-        }
-`
+    },
+    defaultVariants: {
+        variant: 'primary'
+    }
+})
