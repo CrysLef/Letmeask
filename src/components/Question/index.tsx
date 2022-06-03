@@ -1,5 +1,4 @@
 import { ReactNode } from 'react';
-import cx from 'classnames'
 
 import * as S from './styles';
 
@@ -23,19 +22,15 @@ export function Question({
 } : QuestionProps) {
     return(
         <S.Container 
-        className={cx(
-            'question',
-            { isAnswered: isAnswered},
-            { isHighlighted: isHighlighted && !isAnswered},
-        )}
+            type={isAnswered ? 'answered' : ( isHighlighted ? 'highlighted' : 'primary' )}
         >
-            <p>{content}</p>
+            <S.Text>{content}</S.Text>
             <S.Footer>
-                <div className="user-info">
-                    <img src={author.avatar} alt={author.name} />
-                    <span>{author.name}</span>
-                </div>
-                <div className="adminIcons">{children}</div>
+                <S.UserInfo>
+                    <S.Avatar src={author.avatar} alt={author.name} />
+                    <S.UserName>{author.name}</S.UserName>
+                </S.UserInfo>
+                <S.Icons>{children}</S.Icons>
             </S.Footer>
         </S.Container>
     )

@@ -1,5 +1,5 @@
 import { useEffect, useState, createContext, ReactNode } from "react";
-import { auth,firebase } from "../services/firebase";
+import { auth,firebase } from "services/firebase";
 
 
 type User = {

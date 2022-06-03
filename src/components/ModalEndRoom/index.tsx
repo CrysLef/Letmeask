@@ -1,7 +1,8 @@
 import * as S from './styles'
 
-import { useHistory, useParams } from 'react-router'
+import { useNavigate, useParams } from 'react-router'
 import { database } from '../../services/firebase'
+import { Button } from 'components/Button';
 
 type RoomParams = {
     id: string;
@@ -10,13 +11,13 @@ type RoomParams = {
 export function ModalEndRoom({ onClose = () => {} }) {
     const params = useParams<RoomParams>();
     const roomId = params.id;
-    const history = useHistory();
+    const navigate = useNavigate();
     
     async function handleEndRoom() {
         await database.ref(`rooms/${roomId}`).update({
             endAt: new Date(),
         })
-        history.push('/')
+        navigate('/')
     }
     return(
         <S.Container>
@@ -26,11 +27,11 @@ export function ModalEndRoom({ onClose = () => {} }) {
                     <path d="M29.66 29.6598L18.34 18.3398" stroke="#E73F5D" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M24 42V42C14.058 42 6 33.942 6 24V24C6 14.058 14.058 6 24 6V6C33.942 6 42 14.058 42 24V24C42 33.942 33.942 42 24 42Z" stroke="#E73F5D" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
-                <h2>Encerrar sala</h2>
-                <p>Tem certeza que você deseja encerrar esta sala?</p>
+                <S.Title>Encerrar sala</S.Title>
+                <S.Description>Tem certeza que você deseja encerrar esta sala?</S.Description>
                 <S.ButtonsWrapper>
-                    <button onClick={onClose}>Cancelar</button>
-                    <button className="redButton" onClick={handleEndRoom}>Sim, Encerrar</button>
+                    <Button variant='cancel' onClick={onClose}>Cancelar</Button>
+                    <Button variant='danger' onClick={handleEndRoom}>Sim, Encerrar</Button>
                 </S.ButtonsWrapper>
             </S.Modal>
         </S.Container>
