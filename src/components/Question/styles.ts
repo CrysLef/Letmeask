@@ -1,133 +1,84 @@
-import styled from 'styled-components'
+import { styled } from 'styles/theme'
 
 
-export const Container = styled.div`
+export const Container = styled('div', {
+    backgroundColor: '$whiteDetails',
+    borderRadius: 8,
+    boxShadow: '0 2px 12px rgba(0, 0, 0, 0.09)',
+    padding: 24,
 
-    background-color: ${props => props.theme.title === 'light' ? props.theme.colors.whiteDetails : props.theme.colors.grayDark};
-    border-radius: 8px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
-    padding: 24px;
+    '& + &': {
+        marginTop: 8,
+    },
 
-    & + & {
-        margin-top: 8px;
+    '@media (max-width: 900px)': {
+        width: '80%',
+        margin: '0 auto',
+    },
+
+    variants: {
+        type: {
+            primary: {
+                backgroundColor: '$whiteDetails',
+                border: 'none'
+            },
+            highlighted: {
+                backgroundColor: '#F4F0FF',
+                border: '1px solid $primary',
+            },
+            answered: {
+                backgroundColor: '$grayLight',
+                border: 'none',
+            }
+        }
+    },
+    defaultVariants: {
+        type: 'primary'
     }
 
-    &.isHighlighted {
-        background-color: ${props => props.theme.title === 'light' ? '#F4F0FF' : '#DBCFFD'};
-        border: 1px solid #835AFD;
+})
 
-        p {
-            color: ${props => props.theme.title === 'dark' && props.theme.colors.background};
-        }
+export const Text = styled('p', {
+    fontSize: '1.6rem',
+    textAlign: 'justify',
+    color: '$text',
+})
 
-        footer .user-info span {
-            color: #29292E;
-        }
+export const Footer = styled('footer', {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: 24,
+
+    '@media (max-width: 500px)': {
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        gap: 8,
     }
+})
 
-    &.isAnswered {
-        background-color: #D8DCDD;
+export const UserInfo = styled('div', {
+    display: 'flex',
+    alignItems: 'center',
+})
 
-        p {
-            color: ${props => props.theme.title === 'dark' && props.theme.colors.grayDark};
-        }
+export const Avatar = styled('img', {
+    width: 32,
+    height: 32,
+    borderRadius: '50%',
+})
 
-        svg path {
-            stroke: ${props => props.theme.title === 'dark' && props.theme.colors.grayDark};
-        }
+export const UserName = styled('span', {
+    marginLeft: 8,
+    color: '$text',
+    fontSize: '1.4rem',
+})
 
-        footer .user-info img {
-            filter: grayscale(1);
-        }
-
-        footer span {
-            color: ${props => props.theme.title === 'dark' && props.theme.colors.grayDark};
-        }
-    }
-
-    p {
-        font-size: 1.6rem;
-        text-align: justify;
-        color: ${props => props.theme.colors.text};
-    }
-
-    @media (max-width: 900px) {
-        width: 80%;
-        margin: 0 auto;
-    }
-
-`
-
-export const Footer = styled.footer`
+export const Icons = styled('div', {
+    display: 'flex',
+    gap: 16,
     
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 24px;
-
-        .user-info {
-            display: flex;
-            align-items: center;
-
-            img {
-                width: 32px;
-                height: 32px;
-                border-radius: 50%;
-            }
-
-            span {
-                margin-left: 8px;
-                color: ${props => props.theme.title === 'light' ? props.theme.colors.grayDark : props.theme.colors.grayLight};
-                font-size: 1.4rem;
-            }
-        }
-
-        > div {
-            display: flex;
-            gap: 16px;
-        }
-
-        button {
-            border: 0;
-            background-color: transparent;
-            cursor: pointer;
-            transition: filter 0.2s;
-
-            svg path,circle {
-                    stroke: ${props => props.theme.title === 'dark' && props.theme.colors.white};
-                }
-
-            &.like-button {
-                display: flex;
-                align-items: flex-end;
-                color: ${props => props.theme.colors.grayDark};
-                gap: 8px;
-            }
-
-            &.liked {
-                color: ${props => props.theme.title === 'light' ? '#835AFD' : '#603EC6'};
-
-                svg path {
-                    stroke: ${props => props.theme.title === 'light' ? '#835AFD' : '#603EC6'};
-                }
-            }
-
-            &:hover {
-                filter: brightness(0.7);
-            }
-
-        }
-
-        @media (max-width: 500px) {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 8px;
-
-            .adminIcons {
-
-                @media (max-width: 500px) {
-                    align-self: flex-end;
-                }
-            }
-        }
-`
+    '@media (max-width: 500px)': {
+        alignSelf: 'flex-end',
+    }
+})

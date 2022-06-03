@@ -35,11 +35,12 @@ export const CodeWrapper = styled.button`
     font-size: 1.4rem;
     font-weight: 500;
     transition: color .2s;
-    color: ${props => props.theme.title === 'light' ? props.theme.colors.text : props.theme.colors.white };
+    color: 'black';
     
     &:hover {
         color: #835AFD;
     }
     
-    }
+}
 `
+/* ${props => props.theme.title === 'light' ? props.theme.colors.text : props.theme.colors.white } */

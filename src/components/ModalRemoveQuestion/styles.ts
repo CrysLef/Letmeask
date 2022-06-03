@@ -1,81 +1,52 @@
-import styled from 'styled-components'
+import { styled } from 'styles/theme'
 
 
+export const Container = styled('div', {
+    position: 'fixed',
+    height: '100vh',
+    width: '100vw',
+    top: 0,
+    left: 0,
+    backgroundColor: 'rgba(4, 9, 17, .8)',
+    display: 'flex',
+})
 
-export const Container = styled.div`
-    position: fixed;
-    height: 100vh;
-    width: 100vw;
-    top: 0;
-    left: 0;
-    background-color: rgba(4, 9, 17, .8);
-    display: flex;
-`
+export const Modal = styled('div', {
+    width: 590,
+    backgroundColor: '$white',
+    margin: 'auto',
+    borderRadius: 8,
+    fontFamily: '$poppins',
+    textAlign: 'center',
+    py: 64,
 
-export const Modal = styled.div`
-    width: 590px;
-    background-color: ${props => props.theme.colors.background};
-    margin: auto;
-    border-radius: 8px;
-    font-family: 'Poppins',sans-serif;
-    text-align: center;
-    padding: 64px 0;
-        
-        svg {
-            width: 48px;
-            height: 48px;
-            
-            path {
-                stroke: #E73F5D;
-            }
-        } 
-        h2 {
-            font-size: 2.4rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            color: ${props => props.theme.colors.text};
-        }
-        
-        p {
-            text-align: center;
-            margin-bottom: 24px;
-            color: #737380;
-        }
-
-        @media (max-width: 700px) {
-            width: 80%;
-        }
-
-`
-
-export const ButtonsWrapper = styled.div`
-
-    display: flex;
-    gap: 8px;
-    justify-content: center;
-    align-items: center;
-
-    button {
-        padding: 13px 32px;
-        font-size: 1.6rem;
-        border-radius: 8px;
-        border: 0;
-        background-color: ${props => props.theme.title === 'light' ? props.theme.colors.grayLight : props.theme.colors.whiteDetails};
-        color: ${props => props.theme.title === 'light' ? props.theme.colors.grayDark : props.theme.colors.background};
-        cursor: pointer;
-        transition: filter 0.2s;
-
-        &:hover {
-            filter: brightness(0.9);
-        }
+    '@media (max-width: 700px)': {
+        width: '80%',
     }
 
-    .redButton {
-        background-color: #E73F5D;
-        color: #F8F8F8;
-    }
+})
 
-    @media (max-width: 550px) {
-        flex-direction: column;
+export const Title = styled('h2', {
+    fontSize: '2.4rem',
+    fontWeight: 700,
+    marginBottom: 12,
+    color: '$text',
+})
+
+export const Description = styled('p', {
+    textAlign: 'center',
+    marginBottom: 24,
+    color: '$grayDark',
+    fontSize: '1.6rem'
+})
+
+export const ButtonsWrapper = styled('div', {
+    display: 'flex',
+    gap: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
+
+    '@media (max-width: 550px)': {
+        flexDirection: 'column',
     }
-`
+})
